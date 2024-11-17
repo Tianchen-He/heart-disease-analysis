@@ -1,0 +1,62 @@
+---
+title: "Heart Disease Analysis"
+author: "Tianchen He"
+date: "2024-11-17"
+output: html_document
+---
+
+## Introduction
+
+This report analyzes a heart disease dataset obtained from Kaggle. The dataset contains 14 medical and demographic variables related to the presence or absence of heart disease. These variables include factors such as age, sex, chest pain type, resting blood pressure, cholesterol levels, and other health indicators.
+
+The objective of this analysis is to explore key characteristics of the dataset and identify trends or factors contributing to the diagnosis of heart disease. The insights from this analysis will inform future predictive modeling.
+
+## Data Loading
+
+We first load the dataset and explore its structure.
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+
+# Load the dataset
+here::i_am("src/analysis.Rmd")
+data <- read.csv(here("data/heart.csv"))
+
+# Display the structure of the dataset
+str(data)
+```
+
+## Table: Descriptive Statistics for Age and Sex
+
+The table below summarizes key statistics for the variables age and sex.
+
+```{r}
+# Source the tables script
+source(here("src/tables.R"))
+
+# Load the generated table
+age_sex_stats <- readRDS(here("output/age_sex_stats.rds"))
+
+# Display the table
+knitr::kable(age_sex_stats, caption = "Descriptive Statistics for Age and Sex")
+```
+
+The table shows the mean, standard deviation, and range for age and sex. The mean age is around 54 years, with a slight predominance of males over females, reflecting typical demographics for heart disease studies.
+
+## Figure: Distribution of Resting Blood Pressure
+
+```{r}
+# Source the figures script
+source(here("src/figures.R"))
+
+# Display the pre-saved plot
+knitr::include_graphics(here("output/bp_plot.png"))
+```
+
+The histogram indicates that most patients have a resting blood pressure between 120 and 140 mm Hg, though some patients exhibit much higher values, suggesting potential hypertension.
+
+## Conclusion
+
+This report provides an overview of the heart disease dataset, exploring variables such as age, sex, and resting blood pressure. The descriptive statistics and visualizations highlight key trends and risk factors, paving the way for predictive modeling.
