@@ -9,6 +9,7 @@ This repository contains the final project for analyzing heart disease data, foc
   - `figures.R`: Code for creating visualizations.
   - `analysis.Rmd`: R Markdown document for the final report.
 - `output/`: Contains the generated report (`heart_disease_analysis.html`).
+- `renv/`: Folder created by the `renv` package to manage project-specific library environments.
 
 ## Generating the Final Report
 To generate the final report, run:
